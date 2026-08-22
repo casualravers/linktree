@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casual Ravers</title>
+<meta name="description" content="Casual Ravers — collectif tekno. Sons, dates, liens.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="noise"></div>
+
+<main class="page">
+
+  <header class="logo-block">
+    <!-- Quand le logo sera fourni, remplace ce bloc par :
+         <img src="assets/logo.png" alt="Casual Ravers" class="logo-img">
+    -->
+    <h1 class="logo-text">CASUAL<span>RAVERS</span></h1>
+    <p class="tagline">COLLECTIF DE FETE</p>
+  </header>
+
+  <section class="tracks" aria-label="Sons">
+    <h2 class="section-title">LES SORTIES CHAUDES DE TA REGION</h2>
+
+    <div class="track-block">
+      <div class="track-header">
+        <span class="track-title">ENTROPIE — DISCOTEKNO</span>
+        <a class="ig-link" href="https://www.instagram.com/entropie.raw/" target="_blank" rel="noopener noreferrer">
+          <span class="link-icon" aria-hidden="true">◆</span> @entropie.raw
+        </a>
+      </div>
+      <iframe class="sc-player" scrolling="no" frameborder="no" allow="autoplay" loading="lazy"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/dj-entropie/discotekno&color=%23e3a44e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+    </div>
+
+    <div class="track-block">
+      <div class="track-header">
+        <span class="track-title">NABZ — CYCLONE</span>
+        <a class="ig-link" href="https://www.instagram.com/nabzlvs/" target="_blank" rel="noopener noreferrer">
+          <span class="link-icon" aria-hidden="true">◆</span> @nabzlvs
+        </a>
+      </div>
+      <iframe class="sc-player" scrolling="no" frameborder="no" allow="autoplay" loading="lazy"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/nabzlvs/nabz-cyclone&color=%23e3a44e&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
+    </div>
+  </section>
+
+  <section class="events" aria-label="Prochaines dates">
+    <h2 class="section-title">PROCHAINES DATES</h2>
+
+    <ul class="event-list">
+      <!--
+        Pour ajouter/retirer une date, copie-colle un bloc <li> et modifie
+        date / lieu / lien billet. Laisse href="#" et class="soon" si le lien
+        billet n'est pas encore disponible.
+      -->
+      <li class="event-item">
+        <span class="event-date">19.09.2026</span>
+        <span class="event-venue">LE PETIT LONDON</span>
+        <a class="event-ticket soon" href="#">GRATUIT</a>
+      </li>
+      <li class="event-item">
+        <span class="event-date">16.10.2026</span>
+        <span class="event-venue">LITTLE O'CLOCK</span>
+        <a class="event-ticket soon" href="#">GRATUIT</a>
+      </li>
+      <li class="event-item">
+        <span class="event-date">27.02.2026</span>
+        <span class="event-venue">LE PETIT LONDON</span>
+        <a class="event-ticket soon" href="#">GRATUIT</a>
+      </li>
+    </ul>
+  </section>
+
+    <section class="members" aria-label="Membres">
+    <h2 class="section-title">MEMBRES</h2>
+
+    <div class="member-grid">
+      <a class="member-card" href="https://www.instagram.com/entropie.raw/" target="_blank" rel="noopener noreferrer">
+        <span class="member-photo">
+          <!-- Quand la photo sera fournie, remplace la ligne ci-dessous par :
+               <img src="assets/entropie.jpg" alt="Entropie" class="member-img">
+          -->
+          <span class="member-initial" aria-hidden="true">E</span>
+        </span>
+        <span class="member-name">ENTROPIE</span>
+        <span class="member-ig">@entropie.raw</span>
+      </a>
+
+      <a class="member-card" href="https://www.instagram.com/nabzlvs/" target="_blank" rel="noopener noreferrer">
+        <span class="member-photo">
+          <!-- Quand la photo sera fournie, remplace la ligne ci-dessous par :
+               <img src="assets/nabz.jpg" alt="Nabz" class="member-img">
+          -->
+          <span class="member-initial" aria-hidden="true">N</span>
+        </span>
+        <span class="member-name">NABZ</span>
+        <span class="member-ig">@nabzlvs</span>
+      </a>
+
+      <div class="member-card no-link">
+        <span class="member-photo">
+          <!-- Quand la photo sera fournie, remplace la ligne ci-dessous par :
+               <img src="assets/tumult.jpg" alt="Tumult" class="member-img">
+          -->
+          <span class="member-initial" aria-hidden="true">T</span>
+        </span>
+        <span class="member-name">TUMULT</span>
+      </div>
+
+      <div class="member-card no-link">
+        <span class="member-photo">
+          <!-- Quand la photo sera fournie, remplace la ligne ci-dessous par :
+               <img src="assets/ultra-slim.jpg" alt="Ultra Slim" class="member-img">
+          -->
+          <span class="member-initial" aria-hidden="true">U</span>
+        </span>
+        <span class="member-name">ULTRA SLIM</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> CASUAL RAVERS</p>
+  </footer>
+
+</main>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
