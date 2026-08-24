@@ -41,6 +41,7 @@ body {
 }
 
 .page {
+  position: relative;
   width: 100%;
   max-width: 480px;
   padding: 48px 0 32px;
@@ -49,38 +50,53 @@ body {
   align-items: center;
 }
 
+/* ascii art watermark: absolute within the content column so it scrolls
+   with the page and never overlaps as a viewport-spanning fixed layer */
+.ascii-bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  width: 90%;
+  max-width: 460px;
+  height: auto;
+  opacity: 0.1;
+  pointer-events: none;
+  user-select: none;
+}
+
 /* logo */
 .logo-block {
-  text-align: center;
-  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: left;
+  margin-bottom: 32px;
 }
 
-.logo-text {
-  font-family: var(--font-display);
-  font-size: clamp(2.2rem, 9vw, 3rem);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+.logo-heading {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-wordmark-wrap {
   margin: 0;
-  text-transform: uppercase;
+  line-height: 0;
 }
 
-.logo-text span {
+.logo-wordmark {
+  height: 150px;
+  width: auto;
   display: block;
-  color: var(--accent);
 }
 
 .logo-img {
-  max-width: 220px;
-  width: 60%;
-  height: auto;
-}
-
-.tagline {
-  margin: 12px 0 0;
-  font-size: 0.75rem;
-  letter-spacing: 0.35em;
-  color: var(--dim);
-  text-transform: uppercase;
+  width: 105px;
+  height: 105px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 /* links */
