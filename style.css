@@ -87,14 +87,14 @@ body {
 }
 
 .logo-wordmark {
-  height: 150px;
+  height: clamp(38px, 20vw, 150px);
   width: auto;
   display: block;
 }
 
 .logo-img {
-  width: 105px;
-  height: 105px;
+  width: clamp(52px, 16vw, 105px);
+  height: clamp(52px, 16vw, 105px);
   object-fit: contain;
   flex-shrink: 0;
 }
