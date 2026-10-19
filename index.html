@@ -81,6 +81,84 @@
     </ul>
   </section>
 
+  <section class="depot" aria-labelledby="depot-title">
+    <h2 class="section-title" id="depot-title">DEPOSE TON DOODLE</h2>
+    <p class="depot-intro">Un mot, un dessin ou une photo. Ça part directement à l'écran.</p>
+
+    <div class="depot-tabs" role="tablist" aria-label="Type de dépôt">
+      <button class="depot-tab" type="button" role="tab" data-tab="mot" aria-selected="true">MOT</button>
+      <button class="depot-tab" type="button" role="tab" data-tab="dessin" aria-selected="false">DESSIN</button>
+      <button class="depot-tab" type="button" role="tab" data-tab="photo" aria-selected="false">PHOTO</button>
+    </div>
+
+    <div class="depot-panel" data-panel="mot">
+      <label class="depot-label" for="depot-mot">TON MOT (40 CARACTÈRES MAX)</label>
+      <input id="depot-mot" class="depot-input" type="text" maxlength="40" autocomplete="off">
+    </div>
+
+    <div class="depot-panel" data-panel="dessin" hidden>
+      <div class="depot-stage">
+        <canvas id="depot-canvas" class="depot-canvas" width="800" height="800" aria-label="Zone de dessin"></canvas>
+        <div id="depot-cursor" class="depot-cursor" hidden></div>
+      </div>
+
+      <div class="depot-toolrow" role="group" aria-label="Outils">
+        <button class="depot-tool" type="button" data-tool="pen" aria-pressed="true">PINCEAU</button>
+        <button class="depot-tool" type="button" data-tool="eraser" aria-pressed="false">GOMME</button>
+        <button class="depot-tool" type="button" data-tool="line" aria-pressed="false">LIGNE</button>
+        <button class="depot-tool" type="button" data-tool="rect" aria-pressed="false">RECTANGLE</button>
+        <button class="depot-tool" type="button" data-tool="circle" aria-pressed="false">CERCLE</button>
+        <button class="depot-tool" type="button" data-tool="spray" aria-pressed="false">SPRAY</button>
+      </div>
+
+      <div class="depot-toolrow" role="group" aria-label="Stickers">
+        <button class="depot-sticker" type="button" data-glyph="★" aria-label="Étoile">★</button>
+        <button class="depot-sticker" type="button" data-glyph="✚" aria-label="Croix">✚</button>
+        <button class="depot-sticker" type="button" data-glyph="➜" aria-label="Flèche">➜</button>
+        <button class="depot-sticker" type="button" data-glyph="◆" aria-label="Losange">◆</button>
+        <button class="depot-sticker" type="button" data-glyph="✸" aria-label="Éclat">✸</button>
+        <button class="depot-sticker" type="button" data-glyph="✦" aria-label="Sparkle">✦</button>
+      </div>
+
+      <div class="depot-tools">
+        <button class="depot-swatch is-active" type="button" data-color="#f2f2f2" style="background:#f2f2f2" aria-label="Blanc"></button>
+        <button class="depot-swatch" type="button" data-color="#e3a44e" style="background:#e3a44e" aria-label="Ambre"></button>
+        <button class="depot-swatch" type="button" data-color="#ff3d7f" style="background:#ff3d7f" aria-label="Rose"></button>
+        <button class="depot-swatch" type="button" data-color="#3ddc97" style="background:#3ddc97" aria-label="Vert"></button>
+        <button class="depot-swatch" type="button" data-color="#3b82f6" style="background:#3b82f6" aria-label="Bleu"></button>
+        <input id="depot-color" class="depot-color" type="color" value="#f2f2f2" aria-label="Couleur libre">
+        <label class="depot-select">
+          <span class="depot-label">SYMETRIE</span>
+          <select id="depot-sym">
+            <option value="none">aucune</option>
+            <option value="h">miroir horizontal</option>
+            <option value="v">miroir vertical</option>
+            <option value="quad">quatre quadrants</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="depot-tools">
+        <label class="depot-size">
+          <span class="depot-label">TAILLE</span>
+          <input id="depot-size" type="range" min="2" max="60" value="10">
+        </label>
+        <button class="depot-btn" type="button" id="depot-undo" disabled>ANNULER</button>
+        <button class="depot-btn" type="button" id="depot-redo" disabled>RETABLIR</button>
+        <button class="depot-btn" type="button" id="depot-clear">EFFACER</button>
+      </div>
+    </div>
+
+    <div class="depot-panel" data-panel="photo" hidden>
+      <label class="depot-label" for="depot-photo">CHOISIS OU PRENDS UNE PHOTO</label>
+      <input id="depot-photo" class="depot-file" type="file" accept="image/*">
+      <img id="depot-preview" class="depot-preview" alt="" hidden>
+    </div>
+
+    <button id="depot-submit" class="link-btn depot-submit" type="button">ENVOYER</button>
+    <p id="depot-status" class="depot-status" role="status" aria-live="polite"></p>
+  </section>
+
     <section class="members" aria-label="Membres">
     <h2 class="section-title">MEMBRES</h2>
 
@@ -138,5 +216,6 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+<script src="depot.js" defer></script>
 </body>
 </html>
