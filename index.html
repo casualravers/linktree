@@ -97,15 +97,55 @@
     </div>
 
     <div class="depot-panel" data-panel="dessin" hidden>
-      <canvas id="depot-canvas" class="depot-canvas" width="800" height="800" aria-label="Zone de dessin"></canvas>
+      <div class="depot-stage">
+        <canvas id="depot-canvas" class="depot-canvas" width="800" height="800" aria-label="Zone de dessin"></canvas>
+        <div id="depot-cursor" class="depot-cursor" hidden></div>
+      </div>
+
+      <div class="depot-toolrow" role="group" aria-label="Outils">
+        <button class="depot-tool" type="button" data-tool="pen" aria-pressed="true">PINCEAU</button>
+        <button class="depot-tool" type="button" data-tool="eraser" aria-pressed="false">GOMME</button>
+        <button class="depot-tool" type="button" data-tool="line" aria-pressed="false">LIGNE</button>
+        <button class="depot-tool" type="button" data-tool="rect" aria-pressed="false">RECTANGLE</button>
+        <button class="depot-tool" type="button" data-tool="circle" aria-pressed="false">CERCLE</button>
+        <button class="depot-tool" type="button" data-tool="spray" aria-pressed="false">SPRAY</button>
+      </div>
+
+      <div class="depot-toolrow" role="group" aria-label="Stickers">
+        <button class="depot-sticker" type="button" data-glyph="★" aria-label="Étoile">★</button>
+        <button class="depot-sticker" type="button" data-glyph="✚" aria-label="Croix">✚</button>
+        <button class="depot-sticker" type="button" data-glyph="➜" aria-label="Flèche">➜</button>
+        <button class="depot-sticker" type="button" data-glyph="◆" aria-label="Losange">◆</button>
+        <button class="depot-sticker" type="button" data-glyph="✸" aria-label="Éclat">✸</button>
+        <button class="depot-sticker" type="button" data-glyph="✦" aria-label="Sparkle">✦</button>
+      </div>
+
       <div class="depot-tools">
         <button class="depot-swatch is-active" type="button" data-color="#f2f2f2" style="background:#f2f2f2" aria-label="Blanc"></button>
         <button class="depot-swatch" type="button" data-color="#e3a44e" style="background:#e3a44e" aria-label="Ambre"></button>
+        <button class="depot-swatch" type="button" data-color="#ff3d7f" style="background:#ff3d7f" aria-label="Rose"></button>
+        <button class="depot-swatch" type="button" data-color="#3ddc97" style="background:#3ddc97" aria-label="Vert"></button>
+        <button class="depot-swatch" type="button" data-color="#3b82f6" style="background:#3b82f6" aria-label="Bleu"></button>
+        <input id="depot-color" class="depot-color" type="color" value="#f2f2f2" aria-label="Couleur libre">
+        <label class="depot-select">
+          <span class="depot-label">SYMETRIE</span>
+          <select id="depot-sym">
+            <option value="none">aucune</option>
+            <option value="h">miroir horizontal</option>
+            <option value="v">miroir vertical</option>
+            <option value="quad">quatre quadrants</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="depot-tools">
         <label class="depot-size">
           <span class="depot-label">TAILLE</span>
           <input id="depot-size" type="range" min="2" max="60" value="10">
         </label>
-        <button class="depot-clear" type="button" id="depot-clear">EFFACER</button>
+        <button class="depot-btn" type="button" id="depot-undo" disabled>ANNULER</button>
+        <button class="depot-btn" type="button" id="depot-redo" disabled>RETABLIR</button>
+        <button class="depot-btn" type="button" id="depot-clear">EFFACER</button>
       </div>
     </div>
 

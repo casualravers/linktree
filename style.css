@@ -465,8 +465,31 @@ body {
   accent-color: var(--accent);
 }
 
-.depot-clear {
-  padding: 8px 12px;
+.depot-stage {
+  position: relative;
+}
+
+.depot-cursor {
+  position: absolute;
+  border: 1px solid var(--fg);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #0a0a0a;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.depot-toolrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.depot-tool,
+.depot-sticker,
+.depot-btn {
+  min-width: 44px;
+  padding: 8px 10px;
   background: transparent;
   border: 1px solid var(--border);
   color: var(--dim);
@@ -477,10 +500,60 @@ body {
   cursor: pointer;
 }
 
-.depot-clear:hover,
-.depot-clear:focus-visible {
+.depot-sticker {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.depot-tool[aria-pressed="true"],
+.depot-sticker.is-active,
+.depot-tool:hover,
+.depot-sticker:hover,
+.depot-btn:hover,
+.depot-tool:focus-visible,
+.depot-sticker:focus-visible,
+.depot-btn:focus-visible {
   border-color: var(--accent);
   color: var(--accent);
+}
+
+.depot-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.depot-btn:disabled:hover {
+  border-color: var(--border);
+  color: var(--dim);
+}
+
+.depot-color {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: none;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.depot-select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.depot-select .depot-label {
+  margin: 0;
+}
+
+.depot-select select {
+  padding: 6px;
+  background: #111;
+  border: 1px solid var(--border);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
 }
 
 .depot-file {
