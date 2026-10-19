@@ -81,6 +81,44 @@
     </ul>
   </section>
 
+  <section class="depot" aria-labelledby="depot-title">
+    <h2 class="section-title" id="depot-title">DEPOSE TON DOODLE</h2>
+    <p class="depot-intro">Un mot, un dessin ou une photo. Ça part directement à l'écran.</p>
+
+    <div class="depot-tabs" role="tablist" aria-label="Type de dépôt">
+      <button class="depot-tab" type="button" role="tab" data-tab="mot" aria-selected="true">MOT</button>
+      <button class="depot-tab" type="button" role="tab" data-tab="dessin" aria-selected="false">DESSIN</button>
+      <button class="depot-tab" type="button" role="tab" data-tab="photo" aria-selected="false">PHOTO</button>
+    </div>
+
+    <div class="depot-panel" data-panel="mot">
+      <label class="depot-label" for="depot-mot">TON MOT (40 CARACTÈRES MAX)</label>
+      <input id="depot-mot" class="depot-input" type="text" maxlength="40" autocomplete="off">
+    </div>
+
+    <div class="depot-panel" data-panel="dessin" hidden>
+      <canvas id="depot-canvas" class="depot-canvas" width="800" height="800" aria-label="Zone de dessin"></canvas>
+      <div class="depot-tools">
+        <button class="depot-swatch is-active" type="button" data-color="#f2f2f2" style="background:#f2f2f2" aria-label="Blanc"></button>
+        <button class="depot-swatch" type="button" data-color="#e3a44e" style="background:#e3a44e" aria-label="Ambre"></button>
+        <label class="depot-size">
+          <span class="depot-label">TAILLE</span>
+          <input id="depot-size" type="range" min="2" max="60" value="10">
+        </label>
+        <button class="depot-clear" type="button" id="depot-clear">EFFACER</button>
+      </div>
+    </div>
+
+    <div class="depot-panel" data-panel="photo" hidden>
+      <label class="depot-label" for="depot-photo">CHOISIS OU PRENDS UNE PHOTO</label>
+      <input id="depot-photo" class="depot-file" type="file" accept="image/*">
+      <img id="depot-preview" class="depot-preview" alt="" hidden>
+    </div>
+
+    <button id="depot-submit" class="link-btn depot-submit" type="button">ENVOYER</button>
+    <p id="depot-status" class="depot-status" role="status" aria-live="polite"></p>
+  </section>
+
     <section class="members" aria-label="Membres">
     <h2 class="section-title">MEMBRES</h2>
 
@@ -138,5 +176,6 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+<script src="depot.js" defer></script>
 </body>
 </html>
