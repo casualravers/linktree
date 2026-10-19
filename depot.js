@@ -1,8 +1,8 @@
 // Dépôt de doodles : mot, dessin ou photo envoyés vers Supabase Storage.
 // Remplis DEPOT avec l'URL du projet et la clé anon (voir README, section « Dépôt de doodles »).
 const DEPOT = {
-  supabaseUrl: 'https://REMPLACER.supabase.co',
-  anonKey: 'REMPLACER_PAR_LA_CLE_ANON',
+  supabaseUrl: 'https://mlqerniqtkjfcijizswy.supabase.co',
+  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1scWVybmlxdGtqZmNpaml6c3d5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI0MTAwNjYsImV4cCI6MjEwNzk4NjA2Nn0.6JL9jUEvQQQzhjgO1Cx1K1YBz5cLNZU4jStuRmDOKfI',
   bucket: 'doodles',
 };
 
