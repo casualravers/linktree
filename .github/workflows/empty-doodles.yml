@@ -1,0 +1,42 @@
+name: Vider le bucket doodles
+
+on:
+  schedule:
+    # 12h à Paris : 10h UTC en été, 11h UTC en hiver.
+    # Le script vérifie l'heure de Paris, donc un seul des deux passages agit.
+    - cron: '0 10,11 * * *'
+  workflow_dispatch:
+
+jobs:
+  vider:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Heure de Paris
+        id: heure
+        run: echo "heure=$(TZ=Europe/Paris date +%H)" >> "$GITHUB_OUTPUT"
+
+      - name: Vider le bucket
+        if: steps.heure.outputs.heure == '12' || github.event_name == 'workflow_dispatch'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: |
+          set -euo pipefail
+          API="$SUPABASE_URL/storage/v1"
+          while true; do
+            NAMES=$(curl -fsS -X POST \
+              -H "Authorization: Bearer $SUPABASE_SERVICE_KEY" \
+              -H "apikey: $SUPABASE_SERVICE_KEY" \
+              -H "Content-Type: application/json" \
+              -d '{"prefix":"","limit":1000,"offset":0}' \
+              "$API/object/list/doodles" | jq -r '.[].name')
+            [ -z "$NAMES" ] && break
+            BODY=$(printf '%s\n' "$NAMES" | jq -R -s -c 'split("\n") | map(select(. != "")) | {prefixes: .}')
+            curl -fsS -X DELETE \
+              -H "Authorization: Bearer $SUPABASE_SERVICE_KEY" \
+              -H "apikey: $SUPABASE_SERVICE_KEY" \
+              -H "Content-Type: application/json" \
+              -d "$BODY" \
+              "$API/object/doodles" > /dev/null
+          done
+          echo "Bucket doodles vidé."
