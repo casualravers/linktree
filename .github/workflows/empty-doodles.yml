@@ -2,21 +2,16 @@ name: Vider le bucket doodles
 
 on:
   schedule:
-    # 12h à Paris : 10h UTC en été, 11h UTC en hiver.
-    # Le script vérifie l'heure de Paris, donc un seul des deux passages agit.
-    - cron: '0 10,11 * * *'
+    # 12h à Paris en été (10h UTC). En hiver, ce passage tombe à 11h à Paris.
+    # Pas de condition sur l'heure : GitHub peut lancer la tâche en retard, le vidage doit quand même avoir lieu.
+    - cron: '0 10 * * *'
   workflow_dispatch:
 
 jobs:
   vider:
     runs-on: ubuntu-latest
     steps:
-      - name: Heure de Paris
-        id: heure
-        run: echo "heure=$(TZ=Europe/Paris date +%H)" >> "$GITHUB_OUTPUT"
-
       - name: Vider le bucket
-        if: steps.heure.outputs.heure == '12' || github.event_name == 'workflow_dispatch'
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
