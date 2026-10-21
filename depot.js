@@ -371,6 +371,7 @@ const HISTORY_MAX = 20;
 
   photoInput.addEventListener('change', () => {
     photoFile = photoInput.files[0] || null;
+    $('depot-photo-name').textContent = photoFile ? photoFile.name : 'Aucun fichier';
     if (previewUrl) URL.revokeObjectURL(previewUrl);
     previewUrl = photoFile ? URL.createObjectURL(photoFile) : null;
     preview.src = previewUrl || '';
@@ -443,6 +444,7 @@ const HISTORY_MAX = 20;
     updateHistoryButtons();
     photoInput.value = '';
     photoFile = null;
+    $('depot-photo-name').textContent = 'Aucun fichier';
     preview.hidden = true;
     if (previewUrl) { URL.revokeObjectURL(previewUrl); previewUrl = null; }
   }

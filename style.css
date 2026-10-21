@@ -556,11 +556,38 @@ body {
   font-size: 0.75rem;
 }
 
-.depot-file {
-  width: 100%;
+.depot-file-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* L'input natif est masque, le label stylé le remplace ; il reste focusable au clavier. */
+.depot-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.depot-file-btn {
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.depot-file-input:focus-visible + .depot-file-btn {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.depot-file-name {
+  min-width: 0;
+  font-size: 0.75rem;
   color: var(--dim);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .depot-preview {
