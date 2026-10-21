@@ -151,7 +151,11 @@
 
     <div class="depot-panel" data-panel="photo" hidden>
       <label class="depot-label" for="depot-photo">CHOISIS OU PRENDS UNE PHOTO</label>
-      <input id="depot-photo" class="depot-file" type="file" accept="image/*">
+      <div class="depot-file-row">
+        <input id="depot-photo" class="depot-file-input" type="file" accept="image/*">
+        <label class="depot-btn depot-file-btn" for="depot-photo">CHOISIR UNE PHOTO</label>
+        <span id="depot-photo-name" class="depot-file-name">Aucun fichier</span>
+      </div>
       <img id="depot-preview" class="depot-preview" alt="" hidden>
     </div>
 
