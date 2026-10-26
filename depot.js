@@ -397,7 +397,8 @@ const HISTORY_MAX = 20;
 
   // --- mot -----------------------------------------------------------
   async function renderWord(text) {
-    const family = '"Archivo Black", Impact, sans-serif';
+    // Polices emoji après la police du site : le navigateur les utilise pour les caractères qu'Archivo Black ne contient pas.
+    const family = '"Archivo Black", "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", Impact, sans-serif';
     await document.fonts.load(`bold 200px "Archivo Black"`);
     const measure = document.createElement('canvas').getContext('2d');
     let fontSize = 240;
@@ -407,15 +408,19 @@ const HISTORY_MAX = 20;
     if (w0 > maxW) fontSize = Math.floor(fontSize * maxW / w0);
 
     measure.font = `${fontSize}px ${family}`;
+    const m = measure.measureText(text);
     const pad = 40;
+    // Hauteur d'après les vraies dimensions du texte (un emoji dépasse souvent la hauteur de la police).
+    const ascent = Math.max(m.actualBoundingBoxAscent || 0, fontSize * 0.8);
+    const descent = Math.max(m.actualBoundingBoxDescent || 0, fontSize * 0.25);
     const off = document.createElement('canvas');
-    off.width = Math.ceil(measure.measureText(text).width + pad * 2);
-    off.height = Math.ceil(fontSize * 1.4 + pad * 2);
+    off.width = Math.ceil(m.width + pad * 2);
+    off.height = Math.ceil(ascent + descent + pad * 2);
     const d = off.getContext('2d');
     d.font = `${fontSize}px ${family}`;
     d.fillStyle = ACCENT;
-    d.textBaseline = 'middle';
-    d.fillText(text, pad, off.height / 2);
+    d.textBaseline = 'alphabetic';
+    d.fillText(text, pad, pad + ascent);
     return toBlob(off, 'image/png');
   }
 
